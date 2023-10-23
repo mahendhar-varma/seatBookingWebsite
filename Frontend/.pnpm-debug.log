@@ -2,17 +2,22 @@
   "0 debug pnpm:scope": {
     "selected": 1
   },
-  "1 error pnpm": {
-    "errno": 1,
-    "code": "ELIFECYCLE",
-    "pkgid": "@",
-    "stage": "start",
-    "script": "node server.js",
+  "1 info pnpm": {
+    "err": {
+      "name": "Error",
+      "message": "not found: create-react-app",
+      "code": "ENOENT",
+      "stack": "Error: not found: create-react-app\n    at getNotFoundError (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41689:51)\n    at Function.whichSync [as sync] (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41766:13)\n    at getCommandAbsolutePathSync (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43331:44)\n    at default_1 (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43340:32)\n    at /usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:178603:39"
+    }
+  },
+  "2 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/home/workspace/BookingWebsite/Frontend",
     "err": {
       "name": "pnpm",
-      "message": "@ start: `node server.js`\nExit status 1",
-      "code": "ELIFECYCLE",
-      "stack": "pnpm: @ start: `node server.js`\nExit status 1\n    at EventEmitter.<anonymous> (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:105830:20)\n    at EventEmitter.emit (node:events:513:28)\n    at ChildProcess.<anonymous> (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:92391:18)\n    at ChildProcess.emit (node:events:513:28)\n    at maybeClose (node:internal/child_process:1100:16)\n    at Process.ChildProcess._handle.onexit (node:internal/child_process:304:5)"
+      "message": "not found: create-react-app",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "Error: not found: create-react-app\n    at getNotFoundError (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41689:51)\n    at Function.whichSync [as sync] (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41766:13)\n    at getCommandAbsolutePathSync (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43331:44)\n    at default_1 (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43340:32)\n    at /usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:178603:39"
     }
   }
 }
