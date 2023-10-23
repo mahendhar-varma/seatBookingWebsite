@@ -63,3 +63,22 @@ app.get("/seats", async (request, response) => {
   console.log(dataToSendUser);
   response.send(dataToSendUser);
 });
+
+app.put("/book-seats", async (request, response) => {
+  const requestBody = request.body;
+  const idList = Object.values(requestBody);
+  const status = true;
+  idList.map(item => {
+        const updateQuery = `
+        UPDATE 
+            seats 
+        SET 
+           status = '${status}'
+        WHERE 
+           id = '${item}';
+    `;
+
+  await db.run(updateQuery);
+  })
+  response.send("Updated Successfully");
+});
