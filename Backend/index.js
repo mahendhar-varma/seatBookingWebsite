@@ -1,12 +1,13 @@
 const express = require("express");
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
+const cors = require("cors");
 const path = require("path");
 
 const dbPath = path.join(__dirname, "seatingArrangementDB.db");
 
 const app = express();
-app.use(express.json());
+app.use(cors({ origin: true, credentials: true }));
 
 module.exports = app;
 
@@ -29,7 +30,7 @@ const initializeDbAndServer = async () => {
 
 initializeDbAndServer();
 
-app.get("/seats", async (request, response) => {
+app.get("/", async (request, response) => {
   const getSeatsDetailsQuery = `
         SELECT * 
         FROM seats;
@@ -60,7 +61,6 @@ app.get("/seats", async (request, response) => {
     { rowName: "F", rowData: FRowData },
     { rowName: "E", rowData: ERowData },
   ];
-  console.log(dataToSendUser);
   response.send(dataToSendUser);
 });
 
@@ -68,8 +68,8 @@ app.put("/book-seats", async (request, response) => {
   const requestBody = request.body;
   const idList = Object.values(requestBody);
   const status = true;
-  idList.map(item => {
-        const updateQuery = `
+  idList.map(async (item) => {
+    const updateQuery = `
         UPDATE 
             seats 
         SET 
@@ -78,7 +78,7 @@ app.put("/book-seats", async (request, response) => {
            id = '${item}';
     `;
 
-  await db.run(updateQuery);
-  })
+    await db.run(updateQuery);
+  });
   response.send("Updated Successfully");
 });
