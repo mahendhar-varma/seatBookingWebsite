@@ -37,6 +37,7 @@ app.get("/", async (request, response) => {
     `;
 
   const seatsArray = await db.all(getSeatsDetailsQuery);
+  console.log(seatsArray);
   const QRowData = seatsArray.filter((item) => item.row === "Q");
   const PRowData = seatsArray.filter((item) => item.row === "P");
   const NRowData = seatsArray.filter((item) => item.row === "N");
@@ -64,7 +65,7 @@ app.get("/", async (request, response) => {
   response.send(dataToSendUser);
 });
 
-app.put("/book-seats", async (request, response) => {
+app.put("/book", async (request, response) => {
   const requestBody = request.body;
   const idList = Object.values(requestBody);
   const status = true;
