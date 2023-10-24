@@ -68,7 +68,7 @@ app.get("/", async (request, response) => {
 app.put("/book", async (request, response) => {
   const requestBody = request.body;
   const idList = Object.values(requestBody);
-  const status = true;
+  const status = "true";
   idList.map(async (item) => {
     const updateQuery = `
         UPDATE 
